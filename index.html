@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate the actual size of microscopic images easily with our premium tool.">
+    <title>Microscope Image Size Calculator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="blob-c blob-1"></div>
+    <div class="blob-c blob-2"></div>
+    
+    <div class="container">
+        <header>
+            <h1>MicroImage<span class="highlight">Calc</span></h1>
+            <p>Determine true scale with ultimate precision.</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Upload & Calculator Form -->
+            <section class="card form-section">
+                <h2>New Measurement</h2>
+                <form id="calcForm">
+                    <div class="form-group file-upload-wrapper">
+                        <label for="imageUpload" class="file-upload-label">
+                            <span id="file-name">Drag & Drop or Click to Upload</span>
+                        </label>
+                        <input type="file" id="imageUpload" name="image" accept=".png, .jpg, .jpeg, .gif, .webp" required>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label for="inputSize">Image Size (Units)</label>
+                            <input type="number" id="inputSize" name="input_size" step="any" placeholder="e.g., 50" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="magnification">Magnification (X)</label>
+                            <input type="number" id="magnification" name="magnification" step="any" placeholder="e.g., 1000" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-primary">Calculate Actual Size</button>
+                    <div id="loading" class="spinner hidden"></div>
+                </form>
+
+                <div id="resultBox" class="result-box hidden">
+                    <h3>Actual Size</h3>
+                    <div class="result-value"><span id="actualSizeResult"></span> units</div>
+                </div>
+                
+                <div id="errorBox" class="error-box hidden"></div>
+            </section>
+
+            <!-- History Section -->
+            <section class="card history-section">
+                <h2>Conversion History</h2>
+                <div class="history-list" id="historyList">
+                    <!-- Javascript will populate this -->
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
